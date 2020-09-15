@@ -25,6 +25,6 @@ def get_pitch_yaw_roll(img):
 
 
 if __name__ == '__main__':
-    image = cv2.imread('image/waitou.jpg')
+    image = cv2.imread('image/csh_left_head.jpg')
     image = cv2.resize(image, dsize=(64, 64))
     get_pitch_yaw_roll(image)
