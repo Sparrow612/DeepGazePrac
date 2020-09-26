@@ -390,7 +390,7 @@ class CnnHeadPoseEstimator:
             # Convolution Layer 1
             conv1 = tf.tanh(tf.nn.bias_add(tf.nn.conv2d(X, self.hr_conv1_weights, strides=[1, 1, 1, 1], padding='SAME'),
                                            self.hr_conv1_biases))
-            if (DEBUG == True): print("SHAPE conv1: " + str(conv1.get_shape()))
+            if DEBUG == True: print("SHAPE conv1: " + str(conv1.get_shape()))
             # Max Pooling (down-sampling)
             pool1 = tf.nn.max_pool2d(conv1, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
             if (DEBUG == True): print("SHAPE pool1: " + str(pool1.get_shape()))
@@ -464,11 +464,11 @@ class CnnHeadPoseEstimator:
             '[DEEPGAZE] CnnHeadPoseEstimator(load_pitch_variables): the pitch file path is incorrect.')
 
         tf.train.Saver(({"conv1_pitch_w": self.hp_conv1_weights, "conv1_pitch_b": self.hp_conv1_biases,
-                                   "conv2_pitch_w": self.hp_conv2_weights, "conv2_pitch_b": self.hp_conv2_biases,
-                                   "conv3_pitch_w": self.hp_conv3_weights, "conv3_pitch_b": self.hp_conv3_biases,
-                                   "dense1_pitch_w": self.hp_dense1_weights, "dense1_pitch_b": self.hp_dense1_biases,
-                                   "out_pitch_w": self.hp_out_weights, "out_pitch_b": self.hp_out_biases
-                                   })).restore(self._sess, pitchFilePath)
+                         "conv2_pitch_w": self.hp_conv2_weights, "conv2_pitch_b": self.hp_conv2_biases,
+                         "conv3_pitch_w": self.hp_conv3_weights, "conv3_pitch_b": self.hp_conv3_biases,
+                         "dense1_pitch_w": self.hp_dense1_weights, "dense1_pitch_b": self.hp_dense1_biases,
+                         "out_pitch_w": self.hp_out_weights, "out_pitch_b": self.hp_out_biases
+                         })).restore(self._sess, pitchFilePath)
 
     def load_roll_variables(self, rollFilePath):
         """ Load varibles from a tensorflow file
@@ -493,11 +493,11 @@ class CnnHeadPoseEstimator:
             '[DEEPGAZE] CnnHeadPoseEstimator(load_roll_variables): the roll file path is incorrect.')
 
         tf.train.Saver(({"conv1_roll_w": self.hr_conv1_weights, "conv1_roll_b": self.hr_conv1_biases,
-                                   "conv2_roll_w": self.hr_conv2_weights, "conv2_roll_b": self.hr_conv2_biases,
-                                   "conv3_roll_w": self.hr_conv3_weights, "conv3_roll_b": self.hr_conv3_biases,
-                                   "dense1_roll_w": self.hr_dense1_weights, "dense1_roll_b": self.hr_dense1_biases,
-                                   "out_roll_w": self.hr_out_weights, "out_roll_b": self.hr_out_biases
-                                   })).restore(self._sess, rollFilePath)
+                         "conv2_roll_w": self.hr_conv2_weights, "conv2_roll_b": self.hr_conv2_biases,
+                         "conv3_roll_w": self.hr_conv3_weights, "conv3_roll_b": self.hr_conv3_biases,
+                         "dense1_roll_w": self.hr_dense1_weights, "dense1_roll_b": self.hr_dense1_biases,
+                         "out_roll_w": self.hr_out_weights, "out_roll_b": self.hr_out_biases
+                         })).restore(self._sess, rollFilePath)
 
     def return_pitch(self, image, radians=False):
         """ Return the pitch angle associated with the input image.
